@@ -1,0 +1,23 @@
+{% extends "navbar_base.html" %}
+
+{% block extra_navbar_body %}
+<div class="container main-container">
+    <div class="row">
+        <div class="span3">
+            <div class="well">
+                <ul class="nav nav-list">
+                    {% block sidebar %}
+                    {% endblock %}
+                </ul>
+
+            </div>
+        </div>
+        <div class="span9">
+            <div class="hero-unit">
+                {% block sidebar_body %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

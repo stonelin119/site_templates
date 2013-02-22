@@ -1,0 +1,70 @@
+{% extends "analysis_base.html" %}
+{% block content %}
+    <h2>Feedback list</h2>
+    <ul>
+        <a href="{% url feedback_add %}">
+            New
+        </a>
+    </ul>
+
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                <a href="{% url feedback_list %}?page={{ page_obj.previous_page_number }}">prvious</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }}/{{ page_obj.paginator.num_pages }}
+                </span>
+
+                {% if page_obj.has_next %}
+                <a href="{% url feedback_list %}?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+
+    <table border="1">
+        <tr>
+            <td align="center">name</td>
+            <td>phone</td>
+            <td>email</td>
+            <td>feedback</td>
+            <td>date</td>
+            <td colspan="2">operation</td>
+        </tr>
+        {% for feedback in feedbacks %}
+            <tr>
+                <td>
+                    {{ feedback.user_name}}
+                </td>
+                <td>
+                    {{ feedback.user_phone}}
+                </td>
+                <td>
+                    {{ feedback.user_email}}
+                </td>
+                <td>
+                    {{ feedback.content}}
+                </td>
+                <td>
+                    {{ feedback.submit_date|date:"Y/m/d H:i" }}
+                </td>
+                <td>
+                    <a href="{{ feedback.get_absolute_url }}">
+                        Detail
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url feedback_update feedback.id %}">
+                        Update
+                    </a>
+                </td>
+            </tr>
+        {% empty %}
+            <li>No feedback</li>
+        {% endfor %}
+    </table>
+
+{% endblock %}

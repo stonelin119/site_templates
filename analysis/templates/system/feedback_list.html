@@ -1,0 +1,64 @@
+{% extends "pagination_base.html" %}
+
+{% block previous_page_url %}
+    {% url feedback_list %}?page={{ page_obj.previous_page_number }}"
+{% endblock %}
+
+{% block next_page_url %}
+    {% url feedback_list %}?page={{ page_obj.next_page_number }}"
+{% endblock %}
+
+{% block list %}
+    <ul>
+        <a href="{% url feedback_add %}">
+            New
+        </a>
+    </ul>
+    <table class="table table-striped table-bordered table-condensed">
+        <caption>Feedback list</caption>
+        <thead>
+            <tr>
+                <th align="center">Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Feedback</th>
+                <th>Date</th>
+                <th colspan="2">Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feedback in feedbacks %}
+                <tr>
+                    <td>
+                        {{ feedback.user_name}}
+                    </td>
+                    <td>
+                        {{ feedback.user_phone}}
+                    </td>
+                    <td>
+                        {{ feedback.user_email}}
+                    </td>
+                    <td>
+                        {{ feedback.content}}
+                    </td>
+                    <td>
+                        {{ feedback.submit_date|date:"Y/m/d H:i" }}
+                    </td>
+                    <td>
+                        <a href="{{ feedback.get_absolute_url }}">
+                            Detail
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url feedback_update feedback.id %}">
+                            Update
+                        </a>
+                    </td>
+                </tr>
+            {% empty %}
+                <li>No feedback</li>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

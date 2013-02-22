@@ -1,0 +1,18 @@
+{% extends "analysis_base.html" %}
+{% block content %}
+    <h2>Feedback detail</h2>
+    <ul>
+        <li>
+            {{ feedback.user_name}}
+        </li>
+        <li>
+            {{ feedback.user_phone}}
+        </li>
+        <li>
+            {{ feedback.user_email}}
+        </li>
+        <li>
+            {{ feedback.content }}
+        </li>
+    </ul>
+{% endblock %}

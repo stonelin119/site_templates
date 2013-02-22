@@ -1,0 +1,28 @@
+{% extends "analysis_base.html" %}
+
+{% block body %}
+    <div class="hero-unit">
+        {% block list %}
+        {% endblock %}
+    </div>
+
+    {% block pagination %}
+        {% if is_paginated %}
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                    <a href="{% block previous_page_url %}{% endblock %}">prvious</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }}/{{ page_obj.paginator.num_pages }}
+                    </span>
+
+                    {% if page_obj.has_next %}
+                    <a href="{% block next_page_url %}{% endblock %}">next</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}
