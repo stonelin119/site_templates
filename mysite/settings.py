@@ -21,7 +21,7 @@ DATABASES = {
     }
 }
 
-DATABASE_ROUTERS = ['site.dbrouters.AppRouter']
+DATABASE_ROUTERS = ['mysite.dbrouters.AppRouter']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -70,7 +70,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "site/static",
+    "mysite/static",
 )
 
 # List of finder classes that know how to find static files in
@@ -102,16 +102,16 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'site.urls'
+ROOT_URLCONF = 'mysite.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'site.wsgi.application'
+WSGI_APPLICATION = 'mysite.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/home/linfeng/workspace/code/my_site_templates/site/templates"
+    "/home/stone/workspace/code/mysite/mysite/templates"
 )
 
 INSTALLED_APPS = (
