@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^$', TemplateView.as_view(template_name="homepage.html"), name="home"),
     url(r'^analysis/', include('analysis.urls')),
+    url(r'^account/', include('account.urls')),
 )
