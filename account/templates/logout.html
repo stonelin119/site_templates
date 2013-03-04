@@ -1,11 +1,11 @@
-{% extends "site_base.html" %}
+{% extends "base.html" %}
 
 {% load url from future %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Log out" %}{% endblock %}
 
-{% block body %}
+{% block extra_body %}
     <div class="row">
         <div class="span12">
             <form method="POST" action="{% url "account_logout" %}" class="form-horizontal">

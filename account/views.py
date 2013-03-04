@@ -212,7 +212,7 @@ class SignupView(FormView):
 
 class LoginView(FormView):
 
-    template_name = "account/login.html"
+    template_name = "login.html"
     form_class = LoginUsernameForm
     form_kwargs = {}
     redirect_field_name = "next"
@@ -269,7 +269,7 @@ class LoginView(FormView):
 
 class LogoutView(TemplateResponseMixin, View):
 
-    template_name = "account/logout.html"
+    template_name = "logout.html"
     redirect_field_name = "next"
 
     def get(self, *args, **kwargs):
@@ -312,8 +312,8 @@ class ConfirmEmailView(TemplateResponseMixin, View):
 
     def get_template_names(self):
         return {
-            "GET": ["account/email_confirm.html"],
-            "POST": ["account/email_confirmed.html"],
+            "GET": ["email_confirm.html"],
+            "POST": ["email_confirmed.html"],
         }[self.request.method]
 
     def get(self, *args, **kwargs):
@@ -370,7 +370,7 @@ class ConfirmEmailView(TemplateResponseMixin, View):
 
 class ChangePasswordView(FormView):
 
-    template_name = "account/password_change.html"
+    template_name = "password_change.html"
     form_class = ChangePasswordForm
     redirect_field_name = "next"
     messages = {
@@ -450,16 +450,16 @@ class ChangePasswordView(FormView):
             "protocol": protocol,
             "current_site": current_site,
         }
-        subject = render_to_string("account/email/password_change_subject.txt", ctx)
+        subject = render_to_string("email/password_change_subject.txt", ctx)
         subject = "".join(subject.splitlines())
-        message = render_to_string("account/email/password_change.txt", ctx)
+        message = render_to_string("email/password_change.txt", ctx)
         send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email])
 
 
 class PasswordResetView(FormView):
 
-    template_name = "account/password_reset.html"
-    template_name_sent = "account/password_reset_sent.html"
+    template_name = "password_reset.html"
+    template_name_sent = "password_reset_sent.html"
     form_class = PasswordResetForm
     token_generator = default_token_generator
 
@@ -494,9 +494,9 @@ class PasswordResetView(FormView):
                 "current_site": current_site,
                 "password_reset_url": password_reset_url,
             }
-            subject = render_to_string("account/email/password_reset_subject.txt", ctx)
+            subject = render_to_string("email/password_reset_subject.txt", ctx)
             subject = "".join(subject.splitlines())
-            message = render_to_string("account/email/password_reset.txt", ctx)
+            message = render_to_string("email/password_reset.txt", ctx)
             send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email])
 
     def make_token(self, user):
@@ -505,8 +505,8 @@ class PasswordResetView(FormView):
 
 class PasswordResetTokenView(FormView):
 
-    template_name = "account/password_reset_token.html"
-    template_name_fail = "account/password_reset_token_fail.html"
+    template_name = "password_reset_token.html"
+    template_name_fail = "password_reset_token_fail.html"
     form_class = PasswordResetTokenForm
     token_generator = default_token_generator
     redirect_field_name = "next"
@@ -586,7 +586,7 @@ class PasswordResetTokenView(FormView):
 
 class SettingsView(LoginRequiredMixin, FormView):
 
-    template_name = "account/settings.html"
+    template_name = "settings.html"
     form_class = SettingsForm
     redirect_field_name = "next"
     messages = {
@@ -672,7 +672,7 @@ class SettingsView(LoginRequiredMixin, FormView):
 
 class DeleteView(LogoutView):
 
-    template_name = "account/delete.html"
+    template_name = "delete.html"
     messages = {
         "account_deleted": {
             "level": messages.WARNING,
