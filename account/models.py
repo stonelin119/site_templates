@@ -211,8 +211,8 @@ class SignupCode(models.Model):
             "current_site": current_site,
             "signup_url": signup_url,
         }
-        subject = render_to_string("account/email/invite_user_subject.txt", ctx)
-        message = render_to_string("account/email/invite_user.txt", ctx)
+        subject = render_to_string("email/invite_user_subject.txt", ctx)
+        message = render_to_string("email/invite_user.txt", ctx)
         send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [self.email])
         self.sent = timezone.now()
         self.save()
@@ -330,9 +330,9 @@ class EmailConfirmation(models.Model):
             "current_site": current_site,
             "key": self.key,
         }
-        subject = render_to_string("account/email/email_confirmation_subject.txt", ctx)
+        subject = render_to_string("email/email_confirmation_subject.txt", ctx)
         subject = "".join(subject.splitlines()) # remove superfluous line breaks
-        message = render_to_string("account/email/email_confirmation_message.txt", ctx)
+        message = render_to_string("email/email_confirmation_message.txt", ctx)
         send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [self.email_address.email])
         self.sent = timezone.now()
         self.save()
