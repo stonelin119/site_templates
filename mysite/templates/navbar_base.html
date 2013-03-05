@@ -3,7 +3,7 @@
 {% load url from future %}
 {% load i18n %}
 
-{% block extra_body %}
+{% block main %}
     <!-- NAVBAR
     ================================================ -->
     <div class="navbar-wrapper">
@@ -49,11 +49,14 @@
         </div><!-- /.container -->
     </div><!-- /.navbar_wrapper -->
 
-    {% block extra_navbar_body %}
+    {% block navbar_main %}
+    <div class="container main-container">
+        {% block extra_navbar_main %}{% endblock %}
+    </div>
     {% endblock %}
 {% endblock %}
 
-{% block extra_script %}
+{% block extra_body %}
     <script lanuage="javascript">
         $(document).ready(function(){
             $(".dropdown-menu li a").each(function(){
@@ -68,5 +71,5 @@
             });
         });
     </script>
-    {% block extra_navbar_script %}{% endblock %}
+    {% block extra_navbar_body %}{% endblock %}
 {% endblock %}

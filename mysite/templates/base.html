@@ -35,12 +35,12 @@
     <body>
         <div id="content">
             <div id="main">
+                {% include "_messages.html" %}
+                {% block main %}
                 <div class="container main-container">
-                    {% include "_messages.html" %}
-
-                    {% block extra_body %}
-                    {% endblock %}
+                    {% block extra_main %}{% endblock %}
                 </div>
+                {% endblock %}
             </div>
         </div>
 
@@ -52,7 +52,6 @@
         <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
         <script src="{% static "js/csrf.js" %}"></script>
 
-        {% block extra_script %}{% endblock %}
-
+        {% block extra_body %}{% endblock %}
     </body>
 </html>
