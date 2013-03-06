@@ -1,5 +1,0 @@
-.git*
-*.cmd
-*.sublime*
-*.txt
-*.pyc
