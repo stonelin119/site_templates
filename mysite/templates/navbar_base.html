@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "site_base.html" %}
 
 {% load url from future %}
 {% load i18n %}
@@ -41,6 +41,9 @@
                                     </a></li>
                                 </ul>
                             </li>
+                        </ul>
+                        <ul class="nav pull-right">
+                            <li><a href="{% url "account_login" %}">Login</a></li>
                         </ul>
                     </div><!-- /.nav-collapse -->
                 </div><!-- /.nav-inner -->

@@ -25,9 +25,9 @@ from account.utils import default_redirect, user_display
 
 class SignupView(FormView):
 
-    template_name = "signup.html"
-    template_name_email_confirmation_sent = "email_confirmation_sent.html"
-    template_name_signup_closed = "signup_closed.html"
+    template_name = "account/signup.html"
+    template_name_email_confirmation_sent = "account/email_confirmation_sent.html"
+    template_name_signup_closed = "account/signup_closed.html"
     form_class = SignupForm
     form_kwargs = {}
     redirect_field_name = "next"
@@ -212,7 +212,7 @@ class SignupView(FormView):
 
 class LoginView(FormView):
 
-    template_name = "login.html"
+    template_name = "account/login.html"
     form_class = LoginUsernameForm
     form_kwargs = {}
     redirect_field_name = "next"
@@ -269,7 +269,7 @@ class LoginView(FormView):
 
 class LogoutView(TemplateResponseMixin, View):
 
-    template_name = "logout.html"
+    template_name = "account/logout.html"
     redirect_field_name = "next"
 
     def get(self, *args, **kwargs):
@@ -312,8 +312,8 @@ class ConfirmEmailView(TemplateResponseMixin, View):
 
     def get_template_names(self):
         return {
-            "GET": ["email_confirm.html"],
-            "POST": ["email_confirmed.html"],
+            "GET": ["account/email_confirm.html"],
+            "POST": ["account/email_confirmed.html"],
         }[self.request.method]
 
     def get(self, *args, **kwargs):
@@ -370,7 +370,7 @@ class ConfirmEmailView(TemplateResponseMixin, View):
 
 class ChangePasswordView(FormView):
 
-    template_name = "password_change.html"
+    template_name = "account/password_change.html"
     form_class = ChangePasswordForm
     redirect_field_name = "next"
     messages = {
@@ -458,7 +458,7 @@ class ChangePasswordView(FormView):
 
 class PasswordResetView(FormView):
 
-    template_name = "password_reset.html"
+    template_name = "account/password_reset.html"
     template_name_sent = "password_reset_sent.html"
     form_class = PasswordResetForm
     token_generator = default_token_generator
@@ -505,8 +505,8 @@ class PasswordResetView(FormView):
 
 class PasswordResetTokenView(FormView):
 
-    template_name = "password_reset_token.html"
-    template_name_fail = "password_reset_token_fail.html"
+    template_name = "account/password_reset_token.html"
+    template_name_fail = "account/password_reset_token_fail.html"
     form_class = PasswordResetTokenForm
     token_generator = default_token_generator
     redirect_field_name = "next"
@@ -586,7 +586,7 @@ class PasswordResetTokenView(FormView):
 
 class SettingsView(LoginRequiredMixin, FormView):
 
-    template_name = "settings.html"
+    template_name = "account/settings.html"
     form_class = SettingsForm
     redirect_field_name = "next"
     messages = {
@@ -672,7 +672,7 @@ class SettingsView(LoginRequiredMixin, FormView):
 
 class DeleteView(LogoutView):
 
-    template_name = "delete.html"
+    template_name = "account/delete.html"
     messages = {
         "account_deleted": {
             "level": messages.WARNING,

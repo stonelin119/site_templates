@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "site_base.html" %}
 
 {% load url from future %}
 {% load i18n %}
@@ -10,7 +10,11 @@
     <div class="row">
         <div class="span8">
             <form method="POST" action="{% url "account_login" %}" autocapitalize="off" class="form-horizontal"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-                <legend>{% trans "Log in to an existing account" %}</legend>
+                <legend>{% trans "Log in to an existing account" %} {% trans "or" %} 
+                    <a href="{% url "account_signup" %}" class="btn btn-primary">
+                        Create now
+                    </a>
+                </legend>
                 {% csrf_token %}
                 {{ form|as_bootstrap }}
                 {% if redirect_field_value %}

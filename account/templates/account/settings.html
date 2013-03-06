@@ -5,7 +5,7 @@
 
 {% block head_title %}Account{% endblock %}
 
-{% block body %}
+{% block subnav_body %}
     <form method="POST" action="{% url "account_settings" %}">
         <legend>Account</legend>
         {% csrf_token %}
