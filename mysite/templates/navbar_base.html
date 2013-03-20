@@ -32,7 +32,7 @@
                                     {% trans "Language" %}
                                     <b class="caret"></b>
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul id="lang_menu" class="dropdown-menu">
                                     <li><a lang="en" href="#">
                                         {% trans "English" %}
                                     </a></li>
@@ -43,7 +43,7 @@
                             </li>
                         </ul>
                         <ul class="nav pull-right">
-                            {% include "account/setting_bar.html" %}
+                            {% include "account/_setting_bar.html" %}
                         </ul>
                     </div><!-- /.nav-collapse -->
                 </div><!-- /.nav-inner -->
@@ -62,7 +62,7 @@
 {% block extra_body %}
     <script lanuage="javascript">
         $(document).ready(function(){
-            $(".dropdown-menu li a").each(function(){
+            $("#lang_menu li a").each(function(){
                 $(this).attr('href', 'javascript:void(0);')
                     .bind('click', function(){
                         var lang = $(this).attr("lang");

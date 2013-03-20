@@ -5,7 +5,7 @@
 
 {% block head_title %}{% trans "Confirm Email" %}{% endblock %}
 
-{% block body %}
+{% block extra_main %}
     <div class="row">
         <div class="span12">
             <form method="post" action="{% url "account_confirm_email" key=confirmation.key %}" class="form-horizontal">
